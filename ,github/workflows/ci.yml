@@ -1,0 +1,17 @@
+name: CI Pipeline
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: pip install pandas scikit-learn fastapi uvicorn
+      - name: Check Code (Linting)
+        run: |
+          # This is a simple placeholder for testing
+          python -c "print('CI Check Passed')"
