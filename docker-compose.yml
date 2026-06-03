@@ -1,0 +1,13 @@
+services:
+  credit-risk-api:
+    build: .
+    container_name: bati-bank-credit-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Use the local pickle fallback by default; point this at a real
+      # tracking server to load from the MLflow registry instead.
+      - MLFLOW_TRACKING_URI=
+    volumes:
+      - ./models:/app/models:ro
+    restart: unless-stopped
